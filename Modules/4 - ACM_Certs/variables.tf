@@ -1,0 +1,1 @@
+variable "fnf_domain_name" {}

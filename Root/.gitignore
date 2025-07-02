@@ -1,0 +1,60 @@
+# Node dependencies
+node_modules/
+
+# Next.js build outputs
+.next/
+out/
+
+# Next.js static export assets
+public/
+
+# Vercel build output (if ever used)
+.vercel/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Local env files
+.env.local
+.env.*.local
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Mac system files
+.DS_Store
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Crash logs
+crash.log
+
+# Coverage directory
+coverage/
+
+# Optional npm cache directory
+.npm/
+
+# yarn v2+
+.yarn/*
+!.yarn/cache
+!.yarn/unplugged
+!.yarn/build-state.yml
+!.yarn/install-state.gz
