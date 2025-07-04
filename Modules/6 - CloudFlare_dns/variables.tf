@@ -12,4 +12,10 @@ variable "fnf_domain_name" {}
 
 variable "acm_domain_validation_options" {}
 
+variable "cloudflare_api_token" {
+   description = "Cloudflare API token"
+   type        = string
+   sensitive   = true
+}
+
 

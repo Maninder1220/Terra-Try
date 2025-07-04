@@ -1,3 +1,19 @@
+
+terraform {
+  required_providers {
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 5.6"
+    }
+  }
+}
+
+provider "cloudflare" {
+  alias = "cf"
+  api_token = var.cloudflare_api_token 
+}
+
+
 #------------------------------------------------
 #  www.example.com → CloudFront
 #------------------------------------------------

@@ -47,13 +47,29 @@ sudo apt-get install -y terraform
 echo "✅ Terraform is now installed. Version:"
 terraform version
 
-# --- AWS CLI v2 install ---
+# --- AWS CLI v2 install with arch mapping ---
 echo "☁️ 5. Installing AWS CLI v2…"
-curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-${ARCH}.zip" -o "$AWS_CLI_ZIP"
-unzip -q "$AWS_CLI_ZIP"
-sudo ./${AWS_INSTALL_DIR}/install --update
+
+# Map Debian/Ubuntu arch names to AWS CLI download names
+DEB_ARCH=$(dpkg --print-architecture)
+case "$DEB_ARCH" in
+  amd64) AWS_ARCH="x86_64" ;;
+  arm64) AWS_ARCH="aarch64" ;;
+  *) 
+    echo "❌ Unsupported architecture: $DEB_ARCH" >&2
+    exit 1
+    ;;
+esac
+
+AWS_ZIP="awscliv2.zip"
+AWS_DIR="aws"
+
+curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-${AWS_ARCH}.zip" -o "$AWS_ZIP"
+unzip -q "$AWS_ZIP"
+sudo ./${AWS_DIR}/install --update
+
 # Clean up
-rm -rf "$AWS_CLI_ZIP" "$AWS_INSTALL_DIR"
+rm -rf "$AWS_ZIP" "$AWS_DIR"
 
 echo "✅ AWS CLI version:"
 aws --version
